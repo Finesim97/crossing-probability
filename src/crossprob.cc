@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <algorithm>
+#include <iterator>
 
 #include "common.hh"
 #include "read_boundaries_file.hh"

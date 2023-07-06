@@ -123,6 +123,8 @@ double ecdf2(const vector<double>& b, const vector<double>& B, bool use_fft)
 
     vector<double> poisson_nocross_probs = poisson_process_noncrossing_probability(n, n, b, B, use_fft);
 
+    std::cout << "Result before div: " << poisson_nocross_probs[n] << std::endl;
+
     return poisson_nocross_probs[n] / poisson_pmf(n, n);
 }
 

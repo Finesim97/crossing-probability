@@ -8,3 +8,6 @@ bin/*
 *.swp
 gmon.out
 *.bak
+python_extension/**
+.ipynb_checkpoints
+dist
