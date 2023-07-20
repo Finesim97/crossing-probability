@@ -1,9 +1,9 @@
 PKG_CPPFLAGS = -I. @PKG_CPPFLAGS@
 PKG_LIBS = @PKG_LIBS@
 
-SOURCES=RcppExports.cpp @AUTO_SOURCES@
-OBJECTS=$(SOURCES:.cc=.o)
-OBJECTS=$(OBJECTS:.cpp=.o) 
+SOURCES = @AUTOSOURCES@
+OBJECTS_1 = $(SOURCES:.cc=.o)
+OBJECTS = $(OBJECTS_1:.cpp=.o) 
 all: $(SHLIB)
 
 # Provide recipe to remove all objects

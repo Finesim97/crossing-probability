@@ -59,6 +59,10 @@ if test "x${have_fftw3}" = xno; then
   ---------------------------------------------])
 fi
 
+# List of Src files for Rcpp, ignore the bin files with the command line tools
+AUTOSOURCES="RcppExports.cpp common.cc ecdf1_mns2016.cc ecdf1_new.cc ecdf2.cc fftwconvolver.cc poisson_pmf.cc read_boundaries_file.cc string_utils.cc tinymt64.cc"
+AC_SUBST(AUTOSOURCES)
+
 # Write the flags into the src/Makevars file.
 AC_SUBST([PKG_CPPFLAGS], ["${PKG_CPPFLAGS}"])
 AC_SUBST([PKG_LIBS], ["${LIBS} ${PKG_LIBS} ${FFTW3_LIBS}"])

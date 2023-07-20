@@ -648,6 +648,7 @@ ac_subst_vars='LTLIBOBJS
 LIBOBJS
 PKG_LIBS
 PKG_CPPFLAGS
+AUTOSOURCES
 ac_ct_CXX
 CXXFLAGS
 CXX
@@ -4076,6 +4077,10 @@ as_fn_error $? "
   ---------------------------------------------
 See \`config.log' for more details" "$LINENO" 5; }
 fi
+
+# List of Src files for Rcpp, ignore the bin files with the command line tools
+AUTOSOURCES="RcppExports.cpp common.cc ecdf1_mns2016.cc ecdf1_new.cc ecdf2.cc fftwconvolver.cc poisson_pmf.cc read_boundaries_file.cc string_utils.cc tinymt64.cc"
+
 
 # Write the flags into the src/Makevars file.
 PKG_CPPFLAGS="${PKG_CPPFLAGS}"

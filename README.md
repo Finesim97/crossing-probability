@@ -7,7 +7,7 @@ Changes by Lukas Klein:
 
 * Add missing includes for `iterator` and `limits`
 * Add conda env for building (use `build.sh`)
-* R Package build files (configure scripts, run `autoreconf` to update them from configure.ac)
+* R Package build files (configure scripts, run `autoreconf` to update them from configure.ac and devtools::document())
 
 Currently, the main application of this code is to compute p-values for continuous goodness-of-fit tests such as Kolmogorov-Smirnov and their power for detecting specific distributions. These code may be applied to other problems in the fields of sequential analysis, change-point detection, queuing theory, diffusion, finance, etc.  
 
