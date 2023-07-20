@@ -115,7 +115,8 @@ vector<double> poisson_process_noncrossing_probability(int n, double intensity, 
     return buffers.get_src();
 }
 
-double ecdf2(const vector<double>& b, const vector<double>& B, bool use_fft)
+// [[Rcpp::export]]
+double ecdf2(const std::vector<double>& b, const std::vector<double>& B, bool use_fft)
 {
     int n = b.size();
     check_boundary_vector("b", n, b);

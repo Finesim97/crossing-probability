@@ -11,3 +11,8 @@ gmon.out
 python_extension/**
 .ipynb_checkpoints
 dist
+src/Makevars
+autom4te.cache
+config.log
+config.status
+src/*.o

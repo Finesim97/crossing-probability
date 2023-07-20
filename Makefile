@@ -57,6 +57,7 @@ python:
 	swig -c++ -o python_extension/crossprob.cc -python src/crossprob.i
 	python setup.py build
 
+# Already ignores RcppExports.cpp!
 depend:
 	makedepend src/*.cc
 
