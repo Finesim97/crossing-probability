@@ -99,7 +99,7 @@ static double does_random_ecdf_cross(const vector<double>& b, const vector<doubl
     return does_integer_step_function_cross(&tmp_buffer[0], tmp_buffer.size(), b, B);
 }
 
-static double ecdf_crossing_probability_montecarlo(long n, const vector<double>& b, const vector<double>& B, long num_simulations)
+static double ecdf_crossing_probability_montecarlo(long n, const std::vector<double>& b, const std::vector<double>& B, long num_simulations)
 {
     if ((long)B.size() > n) {
         return 1.0;

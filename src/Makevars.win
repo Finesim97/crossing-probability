@@ -1,0 +1,7 @@
+PKG_CPPFLAGS = -I.
+PKG_LIBS =   -lfftw3
+
+SOURCES = RcppExports.cpp common.cc ecdf1_mns2016.cc ecdf1_new.cc ecdf2.cc fftwconvolver.cc poisson_pmf.cc
+OBJECTS_1 = $(SOURCES:.cc=.o)
+OBJECTS = $(OBJECTS_1:.cpp=.o)
+all: $(SHLIB)

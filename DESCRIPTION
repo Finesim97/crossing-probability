@@ -1,16 +1,24 @@
 Package: crossingprobability
-Title: What the Package Does (One Line, Title Case)
+Title: Caclulate the Crossing Probability for Poisson Processes
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+          c(person("Lukas", "Klein", role = c("aut", "cre"),
+             email = "lukas.klein@h-da.de"), 
+             person("Amit", "Moscovich", role = c("aut"),
+             email = "moscovich@gmail.com"))
+Description: Fast, efficient numeric calculation of the crossing probability
+            between one or two boundaries for a Poisson Process implemented in
+            C++ with different algorithms available.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+RdMacros: 
+    Rdpack,
+    mathjaxr
 LinkingTo: 
     Rcpp
 Imports: 
+    Rdpack, 
+    mathjaxr,
     Rcpp

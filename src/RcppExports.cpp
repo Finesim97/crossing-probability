@@ -10,6 +10,50 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// ecdf1_mns2016_b
+double ecdf1_mns2016_b(const std::vector<double>& b);
+RcppExport SEXP _crossingprobability_ecdf1_mns2016_b(SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::vector<double>& >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(ecdf1_mns2016_b(b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// ecdf1_mns2016_B
+double ecdf1_mns2016_B(const std::vector<double>& B);
+RcppExport SEXP _crossingprobability_ecdf1_mns2016_B(SEXP BSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::vector<double>& >::type B(BSEXP);
+    rcpp_result_gen = Rcpp::wrap(ecdf1_mns2016_B(B));
+    return rcpp_result_gen;
+END_RCPP
+}
+// ecdf1_new_B
+double ecdf1_new_B(const std::vector<double>& B);
+RcppExport SEXP _crossingprobability_ecdf1_new_B(SEXP BSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::vector<double>& >::type B(BSEXP);
+    rcpp_result_gen = Rcpp::wrap(ecdf1_new_B(B));
+    return rcpp_result_gen;
+END_RCPP
+}
+// ecdf1_new_b
+double ecdf1_new_b(const std::vector<double>& b);
+RcppExport SEXP _crossingprobability_ecdf1_new_b(SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::vector<double>& >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(ecdf1_new_b(b));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ecdf2
 double ecdf2(const std::vector<double>& b, const std::vector<double>& B, bool use_fft);
 RcppExport SEXP _crossingprobability_ecdf2(SEXP bSEXP, SEXP BSEXP, SEXP use_fftSEXP) {
@@ -25,6 +69,10 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_crossingprobability_ecdf1_mns2016_b", (DL_FUNC) &_crossingprobability_ecdf1_mns2016_b, 1},
+    {"_crossingprobability_ecdf1_mns2016_B", (DL_FUNC) &_crossingprobability_ecdf1_mns2016_B, 1},
+    {"_crossingprobability_ecdf1_new_B", (DL_FUNC) &_crossingprobability_ecdf1_new_B, 1},
+    {"_crossingprobability_ecdf1_new_b", (DL_FUNC) &_crossingprobability_ecdf1_new_b, 1},
     {"_crossingprobability_ecdf2", (DL_FUNC) &_crossingprobability_ecdf2, 3},
     {NULL, NULL, 0}
 };

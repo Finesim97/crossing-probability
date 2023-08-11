@@ -8,3 +8,10 @@
 ^illustration-one-sided.svg$
 ^README.md$
 ^setup.py$
+^.*\.Rproj$
+^aclocal.m4$
+^env.yml$
+^bin$
+^build$
+^Makefile$
+^src/Makevars$

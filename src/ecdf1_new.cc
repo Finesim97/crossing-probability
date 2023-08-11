@@ -12,15 +12,6 @@
 
 using namespace std;
 
-void print_double_array(const double* arr, int n)
-{
-    cout << '[';
-    for (int i = 0; i < n; ++i) {
-        cout << arr[i] << ", ";
-    }
-    cout << "\b\b]";
-}
-
 vector<double> poisson_B_noncrossing_probability_n2(int n, double intensity, const vector<double>& B, int jump_size)
 {
     assert(jump_size <= n);
@@ -111,7 +102,8 @@ vector<double> poisson_B_noncrossing_probability_n2(int n, double intensity, con
     return buffers.get_dest();
 }
 
-double ecdf1_new_B(const vector<double>& B)
+// [[Rcpp::export]]
+double ecdf1_new_B(const std::vector<double>& B)
 {
     //cout << "Called ecdf1_new_B()\n";
     int n = B.size();
@@ -127,8 +119,8 @@ double ecdf1_new_B(const vector<double>& B)
     return poisson_nocross_probabilities[n] / poisson_pmf(n, n);
 }
 // For n=10000, best results k=400...600
-
-double ecdf1_new_b(const vector<double>& b)
+// [[Rcpp::export]]
+double ecdf1_new_b(const std::vector<double>& b)
 {
     //cout << "Called ecdf1_new_b()\n";
     int n = b.size();

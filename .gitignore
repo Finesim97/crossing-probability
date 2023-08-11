@@ -17,3 +17,6 @@ config.log
 config.status
 src/*.o
 src/*.so
+.Rproj.user
+.Rhistory
+src/crossingprobability.dll

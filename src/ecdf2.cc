@@ -18,7 +18,7 @@
 
 using namespace std;
 
-enum BoundType {bSTEP, BSTEP, END};  
+enum BoundType {bSTEP, BSTEP, END};
 
 struct Bound {
     double location;
@@ -69,7 +69,7 @@ void update_dest_buffer_and_step_counts(BoundType bound_tag, vector<double>& des
         ++B_step_count;
     } else {
         if (bound_tag != END) {
-            cout << "tag: " << bound_tag << "\n";
+            // cout << "tag: " << bound_tag << "\n";
             throw runtime_error("Expecting END tag");
         }
     }
@@ -83,7 +83,7 @@ vector<double> poisson_process_noncrossing_probability(int n, double intensity, 
     DoubleBuffer<double> buffers(n+1, 0.0);
     buffers.get_src()[0] = 1.0;
 
-    FFTWConvolver fftconvolver(n+1); 
+    FFTWConvolver fftconvolver(n+1);
     PoissonPMFGenerator pmfgen(n+1);
 
     int b_step_count = 0;

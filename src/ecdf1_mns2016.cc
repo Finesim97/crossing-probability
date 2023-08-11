@@ -195,7 +195,8 @@ static int extract_exponent(FLOAT x)
     return exponent;
 }
 
-double ecdf1_mns2016_b(const vector<double>& b)
+// [[Rcpp::export]]
+double ecdf1_mns2016_b(const std::vector<double>& b)
 {
     int n = b.size();
     check_boundary_vector("b", n, b);
@@ -242,7 +243,8 @@ double ecdf1_mns2016_b(const vector<double>& b)
     return noncrossing_probability;
 }
 
-double ecdf1_mns2016_B(const vector<double>& B)
+// [[Rcpp::export]]
+double ecdf1_mns2016_B(const std::vector<double>& B)
 {
     int n = B.size();
     check_boundary_vector("B", n, B);
