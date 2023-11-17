@@ -1,8 +1,8 @@
-#' Crossing probability for a Poisson process
+#' Crossing Probability
 #'
 #' @description
 #' Calculates the boundary crossing probability in either a one- or
-#' two-sided case for a Poisson process.
+#' two-sided case.
 #' \loadmathjax
 #'
 #' @details
@@ -11,12 +11,12 @@
 #' the empirical cumulative distribution function is:
 #'
 #' \mjdeqn{\hat{F}_n(t) = \frac{1}{n}\sum_i{\mathbb{1}(
-#' X_i \geq t)}.}{F^(t)_n = 1/n sum_i(1(Xi <= t)).
+#' X_i \leq t)}.}{F^(t)_n = 1/n sum_i(1(Xi <= t)).
 #' }
 #'
-#' With two functions \mjeqn{g,h : [0,1] \rightarrow \mathbb{R}}{
-#' g,h : [0,1] -> R} giving monotone-increasing function the
-#' two-sided non-crossing probability can is defined as:
+#' For two monotone-increasing, non-crossing functions \mjeqn{g,h : [0,1]
+#' \rightarrow \mathbb{R}}{g,h : [0,1] -> R} function the
+#' two-sided non-crossing probability is:
 #'
 #' \mjdeqn{P(\forall t \in [0, 1] : g(t) < \hat{F}_n(t) < h(t) )
 #' .}{P(forall t in [0,1] : g(t) < F^(t)_n < h(t) ).}
@@ -38,7 +38,8 @@
 #' }
 #'
 #' The default \code{"auto"} selects \code{"ecdf1-new"} for one-sided
-#' boundaries and \code{"ecdf2-mn2017"} for two-sided uses.
+#' boundaries and \code{"ecdf2-mn2017"} for two-sided uses. Note that
+#' the crossing probability is returned and not the not crossing probability.
 #'
 #' @param lower.boundaries Lower boundaries. Defaults to \code{NULL}.
 #' @param upper.boundaries Upper boundaries. Defaults to \code{NULL}.
@@ -101,15 +102,15 @@ crossing.prob <- function(lower.boundaries = NULL, upper.boundaries = NULL,
 
   if (method == "ecdf1-mns2016") {
     if (l_null) {
-      return(ecdf1_mns2016_B(upper.boundaries))
+      return(1-ecdf1_mns2016_B(upper.boundaries))
     } else {
-      return(ecdf1_mns2016_b(lower.boundaries))
+      return(1-ecdf1_mns2016_b(lower.boundaries))
     }
   } else if (method == "ecdf1-new") {
     if (l_null) {
-      return(ecdf1_new_B(upper.boundaries))
+      return(1-ecdf1_new_B(upper.boundaries))
     } else {
-      return(ecdf1_new_b(lower.boundaries))
+      return(1-ecdf1_new_b(lower.boundaries))
     }
   } else if (method == "ecdf2-mn2017") {
     if (l_null) {
@@ -117,13 +118,13 @@ crossing.prob <- function(lower.boundaries = NULL, upper.boundaries = NULL,
     } else if(u_null){
       upper.boundaries <- rep_len(1, length.out = lower.boundaries)
     }
-    return(ecdf2(lower.boundaries, upper.boundaries, TRUE))
+    return(1-ecdf2(lower.boundaries, upper.boundaries, TRUE))
   } else if (method == "ecdf2-ks2001") {
     if (l_null) {
       lower.boundaries <- rep_len(0, length.out = length(upper.boundaries))
     } else if(u_null){
       upper.boundaries <- rep_len(1, length.out = length(lower.boundaries))
     }
-    return(ecdf2(lower.boundaries, upper.boundaries, FALSE))
+    return(1-ecdf2(lower.boundaries, upper.boundaries, FALSE))
   }
 }

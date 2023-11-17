@@ -1,5 +1,5 @@
 Package: crossingprobability
-Title: Caclulate the Crossing Probability for Poisson Processes
+Title: Caclulate the Crossing Probability
 Version: 0.0.0.9000
 Authors@R: 
           c(person("Lukas", "Klein", role = c("aut", "cre"),
@@ -7,7 +7,7 @@ Authors@R:
              person("Amit", "Moscovich", role = c("aut"),
              email = "moscovich@gmail.com"))
 Description: Fast, efficient numeric calculation of the crossing probability
-            between one or two boundaries for a Poisson Process implemented in
+            between one or two boundaries implemented in
             C++ with different algorithms available.
 License: MIT + file LICENSE
 Encoding: UTF-8
