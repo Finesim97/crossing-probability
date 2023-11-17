@@ -2,7 +2,7 @@
 % Please edit documentation in R/crossing.probability.R
 \name{crossing.prob}
 \alias{crossing.prob}
-\title{Crossing probability for a Poisson process}
+\title{Crossing Probability}
 \usage{
 crossing.prob(
   lower.boundaries = NULL,
@@ -23,7 +23,7 @@ within the boundaries.
 }
 \description{
 Calculates the boundary crossing probability in either a one- or
-two-sided case for a Poisson process.
+two-sided case.
 \loadmathjax
 }
 \details{
@@ -32,12 +32,12 @@ For \mjeqn{n}{n} i.i.d. uniformly distributed random variables
 the empirical cumulative distribution function is:
 
 \mjdeqn{\hat{F}_n(t) = \frac{1}{n}\sum_i{\mathbb{1}(
-X_i \geq t)}.}{F^(t)_n = 1/n sum_i(1(Xi <= t)).
+X_i \leq t)}.}{F^(t)_n = 1/n sum_i(1(Xi <= t)).
 }
 
-With two functions \mjeqn{g,h : [0,1] \rightarrow \mathbb{R}}{
-g,h : [0,1] -> R} giving monotone-increasing function the
-two-sided non-crossing probability can is defined as:
+For two monotone-increasing, non-crossing functions \mjeqn{g,h : [0,1]
+\rightarrow \mathbb{R}}{g,h : [0,1] -> R} function the
+two-sided non-crossing probability is:
 
 \mjdeqn{P(\forall t \in [0, 1] : g(t) < \hat{F}_n(t) < h(t) )
 .}{P(forall t in [0,1] : g(t) < F^(t)_n < h(t) ).}
@@ -59,7 +59,8 @@ We provide the following methods as implemented by Amit Moscovich:
 }
 
 The default \code{"auto"} selects \code{"ecdf1-new"} for one-sided
-boundaries and \code{"ecdf2-mn2017"} for two-sided uses.
+boundaries and \code{"ecdf2-mn2017"} for two-sided uses. Note that
+the crossing probability is returned and not the not crossing probability.
 }
 \examples{
 b <- c(0.1, 0.1, 0.3)
