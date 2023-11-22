@@ -1,9 +1,12 @@
 ^\.Rproj\.user$
 ^\.Rhistory$
+^\.covrignore$
+^\.lintr$
 ^LICENSE\.md$
 ^benchmarks$
 ^python_extension$
-^tests$
+^tests/.+\.py$
+^tests/.+\.txt$
 ^build.sh$
 ^illustration-one-sided.svg$
 ^README.md$
@@ -15,3 +18,4 @@
 ^build$
 ^Makefile$
 ^src/Makevars$
+^build_r_pkg\.R$

@@ -20,3 +20,4 @@ src/*.so
 .Rproj.user
 .Rhistory
 src/crossingprobability.dll
+.DS_Store
