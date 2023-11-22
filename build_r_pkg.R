@@ -18,3 +18,7 @@ cov <- covr::package_coverage()
 print(cov)
 stopifnot(covr::percent_coverage(cov)==100)
 #covr::report(cov)
+
+devtools::build_manual(path = "build")
+devtools::build(path = "build")
+devtools::build(path = "build", binary = TRUE)
