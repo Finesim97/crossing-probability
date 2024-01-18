@@ -11,41 +11,57 @@ crossingprob(
 )
 }
 \arguments{
-\item{lowerboundaries}{Lower boundaries. Defaults to \code{NULL}.}
+\item{lowerboundaries}{numeric vector with the lower boundaries (see
+vector b in the details) between 0 and 1.
+Defaults to \code{NULL}.}
 
-\item{upperboundaries}{Upper boundaries. Defaults to \code{NULL}.}
+\item{upperboundaries}{numeric vector with the upper boundaries (see
+vector B in the details) between 0 and 1.
+Defaults to \code{NULL}.}
 
-\item{method}{See Details. Defaults to \code{"auto"}.}
+\item{method}{algorithm to use, see details. Defaults to \code{"auto"}.}
 }
 \value{
-A float giving the probability to stay
-within the boundaries.
+A float giving the probability
+\mjeqn{\pi_\text{cross}}{pi_cross} for the random variables
+to stay within the boundaries.
 }
 \description{
-Calculates the boundary crossing probability in either a one- or
-two-sided case.
+Calculates the boundary crossing probability for a sequence of uniformly
+distributed variables for either one- or two-sided boundaries.
 \loadmathjax
 }
 \details{
 For \mjeqn{n}{n} i.i.d. uniformly distributed random variables
-\mjeqn{X_1, ..., X_n}{X1, ..., Xn} \mjeqn{X_i \sim U(0,1)}{Xi ~ U(0,1)}
-the empirical cumulative distribution function is:
+\mjeqn{X_1, ..., X_n}{X1, ..., Xn}, for which \mjeqn{F}{F} is the
+(continuous) cumulative distribution function, and
+their order statistics \mjeqn{X_{(1)}, ..., X_{(n)}}{X(1), ..., X(n)}
+the non-crossing probability between the lower boundaries
+\mjeqn{\alpha_1, ..., \alpha_n}{alpha_1, ..., alpha_n} and upper boundaries
+\mjeqn{\beta_1, ..., \beta_1}{beta_1, ..., beta_1} is:
 
-\mjdeqn{\hat{F}_n(t) = \frac{1}{n}\sum_i{\mathbb{1}(
-X_i \leq t)}.}{F^(t)_n = 1/n sum_i(1(Xi <= t)).
-}
+\mjdeqn{\pi_\text{noncross}=P(\forall i : \alpha_i \leq X_{i} \leq \beta_i)
+.}{pi_noncross=P(forall i: alpha_i < X(i) < beta_i ).}
 
-For two monotone-increasing, non-crossing functions \mjeqn{g,h : [0,1]
-\rightarrow \mathbb{R}}{g,h : [0,1] -> R} function the
-two-sided non-crossing probability is:
+The same non-crossing probability is given by the
+order statistics \mjeqn{U_{(1)}, ..., U_{(n)}}{U(1), ..., U(n)} of an
+sample of the i.i.d. uniformly distributed random variable
+\mjeqn{U_i \sim U(0,1)}{Ui ~ (0,1)} and the boundaries transformed
+by the distribution function \mjeqn{F}{F} with
+\mjeqn{b_i=F(\alpha_i)}{bi=F(alpha_i)} and
+\mjeqn{B_i=F(\beta_i)}{bi=F(beta_i)}, i. e.:
 
-\mjdeqn{P(\forall t \in [0, 1] : g(t) < \hat{F}_n(t) < h(t) )
-.}{P(forall t in [0,1] : g(t) < F^(t)_n < h(t) ).}
+\mjdeqn{\pi_\text{noncross}=P(\forall i : b_i \leq U_{i} \leq B_i)
+.}{pi_noncross=P(forall i: alpha_i < X(i) < beta_i ).}
 
+This package provides algorithms to calculate the crossing probability
+\mjeqn{\pi_\text{cross}=1-\pi_\text{noncross}}{p_cross = 1-pi_noncross}.
 See \insertCite{NEWEST;textual}{crossingprobability} for
 more details.
 
-We provide the following methods as implemented by Amit Moscovich:
+We provide an \code{Rcpp} interface to the following algorithms from
+the C++ library \code{"crossing-probability"} by Amit Moscovich
+\insertCite{repo}{crossingprobability}:
 
 \itemize{
 \item{\code{"ecdf1-mns2016"}}{\mjeqn{O(n^2)}{O(n^2)}
@@ -60,7 +76,7 @@ We provide the following methods as implemented by Amit Moscovich:
 
 The default \code{"auto"} selects \code{"ecdf1-new"} for one-sided
 boundaries and \code{"ecdf2-mn2017"} for two-sided uses. Note that
-the crossing probability is returned and not the not crossing probability.
+the crossing-probability is returned and not the non-crossing-probability.
 }
 \examples{
 b <- c(0.1, 0.1, 0.3)

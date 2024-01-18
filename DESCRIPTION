@@ -1,14 +1,16 @@
 Package: crossingprobability
-Title: Caclulate the Crossing Probability
+Title: Crossing Probability for a Sequence of Uniform Random Variables
 Version: 0.0.0.9000
 Authors@R: 
-          c(person("Lukas", "Klein", role = c("aut", "cre"),
-             email = "lukas.klein@h-da.de"), 
-             person("Amit", "Moscovich", role = c("aut"),
-             email = "moscovich@gmail.com"))
+    c(person("Amit", "Moscovich", role = c("aut"),
+        email = "moscovich@gmail.com"),
+      person("Lukas", "Klein", role = c("aut", "cre"),
+       email = "lukas.klein@h-da.de"), 
+      person("Sebastian", "Döhler", role = c("aut"),
+       email = "sebastian.doehler@h-da.de"))
 Description: Fast, efficient numeric calculation of the crossing probability
-            between one or two boundaries implemented in
-            C++ with different algorithms available.
+    between one or two boundaries for a sequence of uniform random variables 
+    using the C++ implementations by Amit Moscovich through 'Rcpp'.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -83,10 +83,9 @@ test_that("no boundaries fails", {
 
 
 test_that("mismatched lengths fails", {
-  expect_error(crossingprob(c(0), c(1,1)), ".+ length.+")
+  expect_error(crossingprob(c(0), c(1, 1)), ".+ length.+")
 })
 test_that("cross fails", {
   expect_error(crossingprob(c(0.1, 0.2, 0.5, 0.6), c(0.1, 0.2, 0.3, 0.7)),
                ".+ cross+")
 })
-
