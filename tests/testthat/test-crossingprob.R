@@ -89,3 +89,12 @@ test_that("cross fails", {
   expect_error(crossingprob(c(0.1, 0.2, 0.5, 0.6), c(0.1, 0.2, 0.3, 0.7)),
                ".+ cross+")
 })
+
+
+test_that("'ecdf1-mns2016' with large vectors results in a warning", {
+  pvec <- sort(runif(30001))
+  expect_warning(crossingprob(pvec, NULL, method = "ecdf1-mns2016"),
+                 ".+ large+")
+  expect_warning(crossingprob(NULL, pvec, method = "ecdf1-mns2016"),
+                 ".+ large+")
+})

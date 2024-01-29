@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Calculates the boundary crossing probability for a sequence of uniformly
-#' distributed variables for either one- or two-sided boundaries.
+#' distributed random variables for either one- or two-sided boundaries.
 #' \loadmathjax
 #'
 #' @details
@@ -12,20 +12,20 @@
 #' their order statistics \mjeqn{X_{(1)}, ..., X_{(n)}}{X(1), ..., X(n)}
 #' the non-crossing probability between the lower boundaries
 #'  \mjeqn{\alpha_1, ..., \alpha_n}{alpha_1, ..., alpha_n} and upper boundaries
-#'  \mjeqn{\beta_1, ..., \beta_1}{beta_1, ..., beta_1} is:
+#'  \mjeqn{\beta_1, ..., \beta_n}{beta_1, ..., beta_n} is:
 #'
-#' \mjdeqn{\pi_\text{noncross}=P(\forall i : \alpha_i \leq X_{i} \leq \beta_i)
+#' \mjdeqn{\pi_\text{noncross}=P(\forall i : \alpha_i \leq X_{(i)} \leq \beta_i)
 #' .}{pi_noncross=P(forall i: alpha_i < X(i) < beta_i ).}
 #'
-#' The same non-crossing probability is given by the
-#' order statistics \mjeqn{U_{(1)}, ..., U_{(n)}}{U(1), ..., U(n)} of an
-#' sample of the i.i.d. uniformly distributed random variable
-#'  \mjeqn{U_i \sim U(0,1)}{Ui ~ (0,1)} and the boundaries transformed
-#' by the distribution function \mjeqn{F}{F} with
-#' \mjeqn{b_i=F(\alpha_i)}{bi=F(alpha_i)} and
+#' The same non-crossing probability can also be determined by the
+#' order statistics \mjeqn{U_{(1)}, ..., U_{(n)}}{U(1), ..., U(n)} of
+#'  \mjeqn{U(0,1)}{U(0,1)} distributed random variables.
+#' Accordingly the transformed boundaries are
+#' given by the distribution function
+#' \mjeqn{F}{F}: \mjeqn{b_i=F(\alpha_i)}{bi=F(alpha_i)} and
 #' \mjeqn{B_i=F(\beta_i)}{bi=F(beta_i)}, i. e.:
 #'
-#' \mjdeqn{\pi_\text{noncross}=P(\forall i : b_i \leq U_{i} \leq B_i)
+#' \mjdeqn{\pi_\text{noncross}=P(\forall i : b_i \leq U_{(i)} \leq B_i)
 #' .}{pi_noncross=P(forall i: alpha_i < X(i) < beta_i ).}
 #'
 #' This package provides algorithms to calculate the crossing probability
@@ -52,6 +52,9 @@
 #' boundaries and \code{"ecdf2-mn2017"} for two-sided uses. Note that
 #' the crossing-probability is returned and not the non-crossing-probability.
 #'
+#' The option \code{"ecdf1-mns2016"} is not recommended for large vectors
+#' with \mjeqn{n > 30000}{n > 30000}.
+#'
 #' @param lowerboundaries numeric vector with the lower boundaries (see
 #'                        vector b in the details) between 0 and 1.
 #'                        Defaults to \code{NULL}.
@@ -60,8 +63,8 @@
 #'                        Defaults to \code{NULL}.
 #' @param method algorithm to use, see details. Defaults to \code{"auto"}.
 #' @return A float giving the probability
-#'         \mjeqn{\pi_\text{cross}}{pi_cross} for the random variables
-#'         to stay within the boundaries.
+#'         \mjeqn{\pi_\text{cross}}{pi_cross} for the ordered
+#'         uniform random variables to stay within the boundaries.
 #' @references
 #' \insertAllCited{}
 #' @importFrom Rdpack reprompt
@@ -93,6 +96,9 @@ crossingprob <-
     }
 
     if (method == "ecdf1-mns2016") {
+      if (max(length(upperboundaries), length(lowerboundaries)) > 30000) {
+        warning("'ecdf1-mns2016' is not recommended for large vectors.")
+      }
       if (l_null) {
         return(1 - ecdf1_mns2016_B(upperboundaries))
       } else {

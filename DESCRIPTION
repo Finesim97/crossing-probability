@@ -1,5 +1,5 @@
 Package: crossingprobability
-Title: Crossing Probability for a Sequence of Uniform Random Variables
+Title: Crossing Probabilities for Sequences of Uniform Random Variables
 Version: 0.0.0.9000
 Authors@R: 
     c(person("Amit", "Moscovich", role = c("aut"),
